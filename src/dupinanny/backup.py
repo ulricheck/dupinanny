@@ -23,7 +23,7 @@ from contextlib import contextmanager
 
 import sys, commands, os, subprocess, pickle, datetime
 
-from src.dupinanny import lock, config
+from dupinanny import lock, config
 
 class Backup( config.ConfigBase ):
     def __init__( self, conf ):

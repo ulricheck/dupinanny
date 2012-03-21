@@ -23,7 +23,7 @@
 # when the object goes out of scope it will try to release
 
 import sys, os, pickle, datetime, time, platform, subprocess
-from src.dupinanny import portalocker
+from dupinanny import portalocker
 
 class lock( object ):
     def __init__( self, lockfile, lockinfo, debug = True ):
