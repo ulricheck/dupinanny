@@ -288,6 +288,9 @@ class LVMBackupTarget( BackupTarget ):
                 print cmd
                 subprocess.check_call( cmd )
 
-if ( __name__ == '__main__' ):
+def start():
     backup = config.readConfig( sys.argv )
     backup['backup'].Run()
+
+if ( __name__ == '__main__' ):
+    start()
