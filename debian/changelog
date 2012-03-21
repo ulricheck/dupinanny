@@ -1,0 +1,7 @@
+python-dupinanny (0.1) hoary; urgency=low
+
+  [ root ]
+  * fixed invalid changes
+  * 
+
+ -- root <root@db01.wienerwald.de>  Mon, 09 Feb 2009 14:48:48 +0100

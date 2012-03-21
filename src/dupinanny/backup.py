@@ -23,7 +23,7 @@ from contextlib import contextmanager
 
 import sys, commands, os, subprocess, pickle, datetime
 
-import config, lock
+from src.dupinanny import lock, config
 
 class Backup( config.ConfigBase ):
     def __init__( self, conf ):
@@ -114,6 +114,19 @@ class CheckMount( object ):
             if ( status != 0 ):
                 raise Exception( 'CheckMount: %s is not mounted' % self.directory )
 
+class ExecuteCommand( object ):
+    def __init__( self, cmd ):
+        self.cmd = cmd
+
+    def Prepare( self, backup ):
+        print 'ExecuteCommand.Prepare'
+        print self.cmd
+        ( status, output ) = commands.getstatusoutput( self.cmd )
+        if ( status != 0 ):
+            print repr( ( status, output ) )
+            raise Exception( 'ExecuteCommand failed: %s' % self.cmd )
+
+
 class BackupTarget( object ):
     def __init__( self, root, destination, exclude = [], shortFilenames = False , include = [] ):
         self.root = root
@@ -134,7 +147,7 @@ class BackupTarget( object ):
         if ( os.path.exists( self.fullFileFlag ) ):
             full = 'full backup enabled'
         else:
-            full = 'not present'	
+            full = 'not present'
         print 'full backup indicator file: %s - %s' % ( repr( self.fullFileFlag ), full )
 
     def Run( self, recursed = False ):
@@ -206,7 +219,7 @@ class BackupTarget( object ):
                     return
                 raise Exception( 'backup failed' )
 
-	    # clear the full flag if needed
+        # clear the full flag if needed
             if ( backup_type == 'full' ):
                 os.unlink( self.fullFileFlag )
 
@@ -276,6 +289,5 @@ class LVMBackupTarget( BackupTarget ):
                 subprocess.check_call( cmd )
 
 if ( __name__ == '__main__' ):
-    import config
     backup = config.readConfig( sys.argv )
     backup['backup'].Run()

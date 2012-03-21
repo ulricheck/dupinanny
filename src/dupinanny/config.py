@@ -18,8 +18,6 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ##########################################################################
 
-import os, re
-
 from optparse import OptionParser
 
 class ConfigBase:
@@ -93,7 +91,7 @@ def readConfig( cmdargs ):
     
     # setup default backup class if needed
     if ( not DupiConfig.has_key( 'backup' ) ):
-        from backup import Backup
+        from src.dupinanny.backup import Backup
         DupiConfig['backup'] = Backup( DupiConfig )
 
     DupiConfig['backup'].commandLineOverrides( options )

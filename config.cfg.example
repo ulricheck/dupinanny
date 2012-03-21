@@ -68,6 +68,9 @@ DupiConfig['items'].append(
 #from backup import CheckMount
 #DupiConfig['prepare'] = [ CheckMount( '/mnt/backup' ) ]
 
+# Execute a command (e.g. db dump) before backup is started
+#DupiConfig['prepare'] = [ ExecuteCommand( 'echo "hello"' ) ]
+
 # adding post-backup steps - write your own class, or use some of the provided utilities
 # for instance, this displays the disk usage
 #class SFTPDiskSpace( object ):

@@ -1,3 +1,8 @@
+Changed by Ulrich Eck <ueck@net-labs.de>
+
+- setuptools compatibility + dupinanny package
+- execute-command extension
+
 Dupinanny backup script
 =======================
 

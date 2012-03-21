@@ -22,7 +22,8 @@
 # NOTE: the lock has to be released and does not expire
 # when the object goes out of scope it will try to release
 
-import sys, os, pickle, portalocker, datetime, time, platform, subprocess
+import sys, os, pickle, datetime, time, platform, subprocess
+from src.dupinanny import portalocker
 
 class lock( object ):
     def __init__( self, lockfile, lockinfo, debug = True ):

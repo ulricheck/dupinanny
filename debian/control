@@ -1,0 +1,13 @@
+Source: python-dupinanny
+Section: python
+Priority: extra
+Maintainer: Ulrich Eck <ueck@net-labs.de>
+Build-Depends: debhelper (>= 4.2.28), unzip, python, python-setuptools, python-dev, python2.6, python2.6-setuptools, python2.6-dev
+Standards-Version: 0.1
+
+Package: python2.6-dupinanny
+Architecture: all
+Depends: ${python:Depends}, python2.6-setuptools, duplicity, python-boto
+Description: Backup Wrapper for duplicity
+
+
